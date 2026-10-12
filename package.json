@@ -1,0 +1,17 @@
+{
+  "name": "coding-awareness-backend",
+  "version": "1.0.0",
+  "description": "Backend API for School Children Coding Awareness CEP Project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["coding-awareness", "cep-project", "school-kids", "education"],
+  "author": "Vaishnavi CEP Project",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

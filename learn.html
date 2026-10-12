@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn Coding Concepts for Kids - Algorithms, Loops, Conditionals, and Fun Languages explained simply!">
+  <title>Learn to Code 💡 | CodeKids</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-badge">{ }</div>
+        <div class="logo-text">
+          <h1>CodeKids</h1>
+          <span>CEP Project • Young Coders</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        <li><a href="learn.html" class="nav-link active">💡 Learn to Code</a></li>
+        <li><a href="playground.html" class="nav-link">🎮 Robo Maze Game</a></li>
+        <li><a href="workshop.html" class="nav-link">🛠️ RoboBot Workshop</a></li>
+        <li><a href="quiz.html" class="nav-link">🏆 Kid Quiz</a></li>
+        <li><a href="certificate.html" class="nav-link">📜 Get Certificate</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="sound-toggle-btn" class="sound-toggle-btn">🔊 Sound: ON</button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Learning Hero Banner -->
+  <div class="container" style="padding-top: 2rem; padding-bottom: 1rem;">
+    <div style="background: white; border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--card-border); display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center;">
+      <div style="padding: 2.5rem;">
+        <span class="section-tag">Learning Zone</span>
+        <h1 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-main);">
+          The Secret Magic Behind All Computers 🪄
+        </h1>
+        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+          You don't need to know complex math to start coding. All you need is curiosity! Let's explore the 4 big ideas that power every computer on Earth.
+        </p>
+        <div style="display: flex; gap: 1rem;">
+          <a href="#core-concepts" class="btn btn-primary"><span>📖</span> Explore Concepts</a>
+          <a href="playground.html" class="btn btn-secondary"><span>🕹️</span> Try Maze Game</a>
+        </div>
+      </div>
+      <div style="padding: 1.5rem; text-align: center;">
+        <img src="assets/images/hero-banner.jpg" alt="Children happily learning coding" style="width: 100%; max-height: 320px; object-fit: cover; border-radius: var(--radius-md); border: 2px solid #E2E8F0;">
+      </div>
+    </div>
+  </div>
+
+  <main class="container" id="core-concepts">
+
+    <!-- Concept 1: Algorithms -->
+    <section style="background: white; border-radius: var(--radius-lg); padding: 2.5rem; margin-bottom: 2.5rem; border: 2px solid #E2E8F0; border-left: 10px solid #5A45EC;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <span style="font-size: 2.5rem;">📜</span>
+          <h2 style="font-family: var(--font-heading); font-size: 1.9rem; color: var(--primary);">1. The Algorithm: A Magic Recipe</h2>
+        </div>
+        <button class="btn-icon-speaker" onclick="speakText('An algorithm is simply a step-by-step recipe to solve a problem! Just like brushing your teeth: squeeze toothpaste, brush circles, rinse with water!')">
+          🔊 Listen
+        </button>
+      </div>
+      <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        An <strong>algorithm</strong> is simply a step-by-step set of instructions to accomplish a task. Think of it like a recipe for making delicious chocolate chip cookies or following steps to fold a paper airplane!
+      </p>
+
+      <div style="background: #F8FAFC; border-radius: var(--radius-md); padding: 1.5rem; border: 2px dashed #CBD5E1;">
+        <h4 style="font-family: var(--font-heading); margin-bottom: 0.8rem; color: var(--text-main);">🥞 Algorithm for Brushing Teeth:</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+          <span style="background: white; padding: 0.5rem 1rem; border-radius: var(--radius-sm); border: 1.5px solid #E2E8F0; font-weight: 600;">Step 1: Pick up toothbrush 🪥</span>
+          <span style="background: white; padding: 0.5rem 1rem; border-radius: var(--radius-sm); border: 1.5px solid #E2E8F0; font-weight: 600;">Step 2: Squeeze toothpaste 🫧</span>
+          <span style="background: white; padding: 0.5rem 1rem; border-radius: var(--radius-sm); border: 1.5px solid #E2E8F0; font-weight: 600;">Step 3: Brush in circles for 2 min ⏰</span>
+          <span style="background: white; padding: 0.5rem 1rem; border-radius: var(--radius-sm); border: 1.5px solid #E2E8F0; font-weight: 600;">Step 4: Rinse mouth with water 💧</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concept 2: Sequencing -->
+    <section style="background: white; border-radius: var(--radius-lg); padding: 2.5rem; margin-bottom: 2.5rem; border: 2px solid #E2E8F0; border-left: 10px solid #FF9F43;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <span style="font-size: 2.5rem;">👟</span>
+          <h2 style="font-family: var(--font-heading); font-size: 1.9rem; color: #D97706;">2. Sequencing: Order Matters!</h2>
+        </div>
+        <button class="btn-icon-speaker" onclick="speakText('Sequencing means order matters! If you put on your shoes before your socks, it will not work! Computers do exactly what you say in the exact order you say it.')">
+          🔊 Listen
+        </button>
+      </div>
+      <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1rem;">
+        In code, computers execute instructions in the exact order you give them. If you mix up the order, funny things happen!
+      </p>
+      <div style="background: #FFFBEB; border-radius: var(--radius-md); padding: 1.2rem; border: 2px solid #FDE68A; color: #92400E; font-weight: 600;">
+        💡 Imagine putting on your shoes 👞 BEFORE putting on your socks 🧦! That wouldn't work, right? That's why sequence is crucial in code!
+      </div>
+    </section>
+
+    <!-- Concept 3: Loops -->
+    <section style="background: white; border-radius: var(--radius-lg); padding: 2.5rem; margin-bottom: 2.5rem; border: 2px solid #E2E8F0; border-left: 10px solid #10AC84;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <span style="font-size: 2.5rem;">🔁</span>
+          <h2 style="font-family: var(--font-heading); font-size: 1.9rem; color: #10AC84;">3. Loops: Repeat Without Effort!</h2>
+        </div>
+        <button class="btn-icon-speaker" onclick="speakText('A loop tells a computer to repeat something again and again. Instead of writing walk 100 times, you just say repeat 100 times: walk!')">
+          🔊 Listen
+        </button>
+      </div>
+      <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        Coders are smart—they don't like doing the same work over and over! A <strong>Loop</strong> tells the computer: <em>"Repeat this action 10 times or until the game is won!"</em>
+      </p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div style="background: #FEE2E2; padding: 1rem; border-radius: var(--radius-sm); border: 2px solid #FCA5A5;">
+          <h4 style="color: #991B1B; font-family: var(--font-heading); margin-bottom: 0.5rem;">❌ Without Loops (Tiring):</h4>
+          <code style="font-size: 0.95rem; color: #7F1D1D; display: block; line-height: 1.6;">
+            jump();<br>jump();<br>jump();<br>jump();<br>jump(); (So much typing!)
+          </code>
+        </div>
+        <div style="background: #DCFCE7; padding: 1rem; border-radius: var(--radius-sm); border: 2px solid #86EFAC;">
+          <h4 style="color: #166534; font-family: var(--font-heading); margin-bottom: 0.5rem;">✅ With a Loop (Super Smart!):</h4>
+          <code style="font-size: 0.95rem; color: #14532D; display: block; line-height: 1.6;">
+            repeat 5 times {<br>
+            &nbsp;&nbsp;jump();<br>
+            } // Clean and easy!
+          </code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concept 4: Conditionals (Interactive Live Demo Widget!) -->
+    <section style="background: white; border-radius: var(--radius-lg); padding: 2.5rem; margin-bottom: 2.5rem; border: 2px solid #E2E8F0; border-left: 10px solid #FF5E7E;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <span style="font-size: 2.5rem;">⚖️</span>
+          <h2 style="font-family: var(--font-heading); font-size: 1.9rem; color: #E11D48;">4. Conditionals: "IF / ELSE" Smart Choices</h2>
+        </div>
+        <button class="btn-icon-speaker" onclick="speakText('Conditionals let computers make decisions! IF it is raining, take an umbrella. ELSE, wear cool sunglasses!')">
+          🔊 Listen
+        </button>
+      </div>
+      <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        How does a character in a game know when to jump over a pit? By using <strong>IF / ELSE conditions</strong>!
+      </p>
+
+      <!-- Interactive Conditional Sandbox -->
+      <div style="background: #F8FAFC; border-radius: var(--radius-md); padding: 1.5rem; border: 2px solid #E2E8F0; text-align: center;">
+        <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 1rem;">🎮 Interactive Weather Condition Simulator</h4>
+        <div style="margin-bottom: 1.5rem;">
+          <span style="font-weight: 600; margin-right: 1rem;">Is it raining today?</span>
+          <button class="btn btn-sm btn-primary" id="weather-rain-btn" onclick="setWeather(true)">🌧️ Yes, It's Raining!</button>
+          <button class="btn btn-sm btn-outline" id="weather-sun-btn" onclick="setWeather(false)" style="margin-left: 0.5rem;">☀️ No, It's Sunny!</button>
+        </div>
+
+        <div id="weather-result-box" style="background: white; max-width: 450px; margin: 0 auto; padding: 1.2rem; border-radius: var(--radius-md); border: 2px solid #5A45EC;">
+          <div style="font-size: 3rem;" id="weather-avatar">🌧️🤖☂️</div>
+          <div style="font-family: 'Courier New', monospace; font-size: 1rem; color: #5A45EC; margin-top: 0.5rem; font-weight: 700;" id="weather-code">
+            if (isRaining === true) { robo.takeUmbrella(); }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kid Friendly Coding Languages -->
+    <section class="section" id="languages">
+      <div class="section-header">
+        <span class="section-tag">Cool Tools</span>
+        <h2 class="section-title">The Best Coding Languages for Kids! 🐱🐍</h2>
+        <p class="section-subtitle">
+          Which programming language should you start with? Here are the most exciting tools built just for young creators!
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-top-icon icon-orange">🐱</div>
+          <h3>Scratch (by MIT)</h3>
+          <p>
+            The world's #1 drag-and-drop coding platform for children! Snap colorful blocks together to make games, dance parties, and stories.
+          </p>
+          <div class="card-footer">
+            <span style="font-weight: 700; color: #D97706;">Age: 6 - 13</span>
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Visual Blocks</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-top-icon icon-green">🐍</div>
+          <h3>Python</h3>
+          <p>
+            Reads just like plain English! Perfect for writing your first text-based code, powering Minecraft mods, and teaching robots.
+          </p>
+          <div class="card-footer">
+            <span style="font-weight: 700; color: #10AC84;">Age: 10+</span>
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Text Code</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-top-icon icon-purple">🌐</div>
+          <h3>HTML & CSS</h3>
+          <p>
+            The building blocks of every website on the Internet! HTML builds the buttons and images; CSS paints them with colors and styles!
+          </p>
+          <div class="card-footer">
+            <span style="font-weight: 700; color: var(--primary);">Age: 9+</span>
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Web Building</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to action to play game -->
+    <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #EEF2FF, #FDF4FF); border-radius: var(--radius-lg); border: 2px dashed var(--primary-light);">
+      <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--primary);">
+        Ready to Put Your Superpowers to Work? 🚀
+      </h3>
+      <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">
+        Guide Robo through the obstacles in our interactive block-coding game!
+      </p>
+      <a href="playground.html" class="btn btn-primary">🎮 Play RoboCoder Maze Now!</a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom: 0.8rem;">
+          <div class="logo-badge">{ }</div>
+          <div class="logo-text">
+            <h1>CodeKids</h1>
+            <span>CEP Project • Young Coders</span>
+          </div>
+        </div>
+        <p>Empowering school children with coding literacy and creative problem solving.</p>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">🏠 Home</a></li>
+          <li><a href="workshop.html">🛠️ RoboBot Workshop</a></li>
+          <li><a href="playground.html">🎮 RoboCoder Maze Game</a></li>
+          <li><a href="quiz.html">🏆 Take the Kid Coder Quiz</a></li>
+          <li><a href="certificate.html">📜 Generate Certificate</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Project Info</h4>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Vaishnavi CEP Project • Coding Awareness for School Children
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 CodeKids CEP Project • Designed with ❤️ for School Children Everywhere!</p>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function setWeather(isRaining) {
+      if (window.sounds) window.sounds.playClick();
+      const rainBtn = document.getElementById('weather-rain-btn');
+      const sunBtn = document.getElementById('weather-sun-btn');
+      const avatar = document.getElementById('weather-avatar');
+      const code = document.getElementById('weather-code');
+
+      if (isRaining) {
+        rainBtn.className = 'btn btn-sm btn-primary';
+        sunBtn.className = 'btn btn-sm btn-outline';
+        avatar.textContent = '🌧️🤖☂️';
+        code.innerHTML = 'if (isRaining === true) {<br>&nbsp;&nbsp;robo.takeUmbrella(); // Stay dry! ☂️<br>}';
+      } else {
+        rainBtn.className = 'btn btn-sm btn-outline';
+        sunBtn.className = 'btn btn-sm btn-primary';
+        avatar.textContent = '☀️🤖🕶️';
+        code.innerHTML = 'else {<br>&nbsp;&nbsp;robo.wearSunglasses(); // Enjoy the sunshine! 🕶️<br>}';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kid Coder Quiz - Test your coding superpowers, earn badges and get your certificate!">
+  <title>Kid Coder Quiz Zone 🏆 | CodeKids</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-badge">{ }</div>
+        <div class="logo-text">
+          <h1>CodeKids</h1>
+          <span>CEP Project • Young Coders</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        <li><a href="learn.html" class="nav-link">💡 Learn to Code</a></li>
+        <li><a href="playground.html" class="nav-link">🎮 Robo Maze Game</a></li>
+        <li><a href="workshop.html" class="nav-link">🛠️ RoboBot Workshop</a></li>
+        <li><a href="quiz.html" class="nav-link active">🏆 Kid Quiz</a></li>
+        <li><a href="certificate.html" class="nav-link">📜 Get Certificate</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="sound-toggle-btn" class="sound-toggle-btn">🔊 Sound: ON</button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="section-header">
+      <span class="section-tag">Superpower Challenge</span>
+      <h1 class="section-title">The Young Coder Quiz Zone! 🌟</h1>
+      <p class="section-subtitle">
+        Answer the questions, unlock your special Coder Badge, and earn your official certificate!
+      </p>
+    </div>
+
+    <!-- Quiz Box Container -->
+    <div class="quiz-container" id="quiz-container-box">
+      
+      <!-- Loading State -->
+      <div id="quiz-loading" style="text-align: center; padding: 3rem 1rem;">
+        <div style="font-size: 3rem; animation: bounce 1s infinite;">🤖⚡</div>
+        <h3 style="font-family: var(--font-heading); color: var(--primary); margin-top: 1rem;">
+          Warming up quiz questions from the server...
+        </h3>
+      </div>
+
+      <!-- Active Quiz Content -->
+      <div id="quiz-content" style="display: none;">
+        <div class="quiz-header-bar">
+          <span id="question-counter" style="font-family: var(--font-heading); font-weight: 700; color: var(--primary); font-size: 1.1rem;">
+            Question 1 of 5
+          </span>
+          <button id="quiz-hint-btn" class="btn-icon-speaker" style="background: #FEF3C7; color: #B45309;">
+            💡 Need a Hint?
+          </button>
+        </div>
+
+        <div class="quiz-progress-wrapper">
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+          </div>
+        </div>
+
+        <div id="quiz-hint-box" style="display: none; background: #FFFBEB; border: 2px dashed #F59E0B; padding: 0.9rem 1.2rem; border-radius: var(--radius-sm); margin-bottom: 1.2rem; color: #92400E; font-size: 0.95rem;">
+          <!-- Hint injected here -->
+        </div>
+
+        <div class="question-box">
+          <div class="question-emoji" id="question-emoji">📜</div>
+          <div class="question-text" id="question-text">
+            What is an Algorithm in simple words?
+          </div>
+        </div>
+
+        <!-- Options Container -->
+        <div class="options-grid" id="options-grid">
+          <!-- Rendered by quiz.js -->
+        </div>
+
+        <!-- Feedback Box -->
+        <div id="quiz-feedback" class="quiz-feedback-box"></div>
+
+        <!-- Action / Next Button -->
+        <div style="text-align: right;">
+          <button id="quiz-next-btn" class="btn btn-primary" style="display: none;">
+            Next Question ➡️
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiz Results Card -->
+      <div id="quiz-results" style="display: none; text-align: center; padding: 1.5rem 0;">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">🎉🏆🎊</div>
+        <h2 style="font-family: var(--font-heading); font-size: 2.2rem; color: var(--text-main); margin-bottom: 0.5rem;">
+          Quiz Completed!
+        </h2>
+        <p id="result-score-title" style="font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem;">
+          You scored 5 out of 5! (100%)
+        </p>
+
+        <div style="background: #EEF2FF; border: 3px solid var(--primary-light); border-radius: var(--radius-lg); padding: 2rem; max-width: 480px; margin: 0 auto 2rem;">
+          <span style="font-size: 0.9rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px;">Unlocked Coder Badge:</span>
+          <h3 id="result-badge-name" style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--primary-dark); margin: 0.5rem 0;">
+            Master Code Wizard 🧙‍♂️✨
+          </h3>
+          <p id="result-badge-desc" style="color: var(--text-muted); font-size: 1rem;">
+            Outstanding! You have super-sharp algorithmic thinking!
+          </p>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <a id="result-cert-link" href="certificate.html" class="btn btn-secondary">
+            <span>📜</span> Claim My Certificate!
+          </a>
+          <button onclick="location.reload()" class="btn btn-outline">
+            <span>🔄</span> Try Quiz Again
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom: 0.8rem;">
+          <div class="logo-badge">{ }</div>
+          <div class="logo-text">
+            <h1>CodeKids</h1>
+            <span>CEP Project • Young Coders</span>
+          </div>
+        </div>
+        <p>Empowering school children with coding literacy and creative problem solving.</p>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Modules</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">🏠 Home</a></li>
+          <li><a href="workshop.html">🛠️ RoboBot Workshop</a></li>
+          <li><a href="learn.html">💡 Learn to Code</a></li>
+          <li><a href="playground.html">🎮 RoboCoder Maze Game</a></li>
+          <li><a href="certificate.html">📜 Generate Certificate</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Project Info</h4>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Vaishnavi CEP Project • Coding Awareness for School Children
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 CodeKids CEP Project • Designed with ❤️ for School Children Everywhere!</p>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>

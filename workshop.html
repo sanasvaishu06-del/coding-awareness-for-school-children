@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RoboBot Workshop - Build, customize, and program your robot with code blocks to solve real construction missions!">
+  <title>RoboBot Workshop: Build & Code 🤖🛠️ | CodeKids</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/workshop.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" id="site-logo">
+        <div class="logo-badge">{ }</div>
+        <div class="logo-text">
+          <h1>CodeKids</h1>
+          <span>CEP Project • Young Coders</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        <li><a href="learn.html" class="nav-link">💡 Learn to Code</a></li>
+        <li><a href="playground.html" class="nav-link">🎮 Robo Maze Game</a></li>
+        <li><a href="workshop.html" class="nav-link active">🛠️ RoboBot Workshop</a></li>
+        <li><a href="quiz.html" class="nav-link">🏆 Kid Quiz</a></li>
+        <li><a href="certificate.html" class="nav-link">📜 Get Certificate</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="sound-toggle-btn" class="sound-toggle-btn" title="Toggle Sound Effects">
+          🔊 Sound: ON
+        </button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header Hero -->
+  <main class="container">
+    <div class="section-header">
+      <span class="section-tag">STEM Engineering & Algorithmic Lab</span>
+      <h1 class="section-title">RoboBot Workshop: Build & Code! 🤖⚙️</h1>
+      <p class="section-subtitle">
+        First assemble your custom robot parts (chassis, wheels, and tools), then write code algorithms to build bridges, solar towers, and launch space rockets!
+      </p>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="workshop-nav-tabs">
+      <button class="workshop-tab-btn active" data-tab="assembly">
+        <span class="tab-num">1</span> 🛠️ Assemble Robot
+      </button>
+      <button class="workshop-tab-btn" data-tab="coding">
+        <span class="tab-num">2</span> 💻 Code Algorithm
+      </button>
+      <button class="workshop-tab-btn" data-tab="arena">
+        <span class="tab-num">3</span> 🏗️ Mission Arena
+      </button>
+      <button class="workshop-tab-btn" data-tab="blueprint">
+        <span class="tab-num">4</span> 📜 Blueprint & Badge
+      </button>
+    </div>
+
+    <!-- ===================================================================
+         TAB 1: BOT ASSEMBLY BAY (HARDWARE)
+         =================================================================== -->
+    <div class="workshop-tab-panel active" id="tab-assembly">
+      <div class="assembly-layout">
+        
+        <!-- Left: Live Blueprint Preview & Specs -->
+        <div class="blueprint-stage-card">
+          <div class="blueprint-grid-bg"></div>
+          
+          <div class="blueprint-header">
+            <div>
+              <span class="section-tag" style="margin-bottom: 0.2rem;">Schematic Preview</span>
+              <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--text-main);">
+                Hardware Blueprint
+              </h3>
+            </div>
+            <button class="btn-icon-speaker" onclick="speakText('This is your robot preview! Choose chassis armor, wheels, and tools on the right to customize its capabilities!')">
+              🔊 Explain
+            </button>
+          </div>
+
+          <!-- Dynamic SVG Display -->
+          <div class="robot-canvas-container">
+            <div class="robot-pedestal"></div>
+            <div id="robot-svg-display">
+              <!-- Rendered by workshop.js -->
+            </div>
+          </div>
+
+          <!-- Live Engineering Specs Meters -->
+          <div class="robot-specs-box">
+            <div class="spec-row">
+              <span>🏎️ Speed:</span>
+              <div class="spec-bar-track">
+                <div class="spec-bar-fill" id="spec-bar-speed" style="width: 75%; background: #3B82F6;"></div>
+              </div>
+              <span id="spec-val-speed">75%</span>
+            </div>
+
+            <div class="spec-row">
+              <span>🏗️ Lifting Power:</span>
+              <div class="spec-bar-track">
+                <div class="spec-bar-fill" id="spec-bar-power" style="width: 90%; background: #F59E0B;"></div>
+              </div>
+              <span id="spec-val-power">90%</span>
+            </div>
+
+            <div class="spec-row">
+              <span>⚡ Battery Life:</span>
+              <div class="spec-bar-track">
+                <div class="spec-bar-fill" id="spec-bar-battery" style="width: 85%; background: #10B981;"></div>
+              </div>
+              <span id="spec-val-battery">85%</span>
+            </div>
+
+            <div class="spec-row">
+              <span>📡 Sensor Range:</span>
+              <div class="spec-bar-track">
+                <div class="spec-bar-fill" id="spec-bar-sensor" style="width: 70%; background: #8B5CF6;"></div>
+              </div>
+              <span id="spec-val-sensor">70%</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem; width: 100%;">
+            <button class="btn btn-primary" style="width: 100%;" onclick="window.roboWorkshop.switchTab('coding')">
+              <span>💻</span> Lock In Robot & Proceed to Code! ➡️
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Customization Controls -->
+        <div class="assembly-controls">
+          
+          <!-- Name & Color Swatches -->
+          <div class="name-paint-group">
+            <div>
+              <label class="assembly-section-title">
+                <span>🏷️</span> Robot Name:
+              </label>
+              <input type="text" id="robot-name-input" class="robot-name-input" value="Titan-3000" maxlength="20" placeholder="e.g. Sparky, RoboPro">
+            </div>
+
+            <div>
+              <label class="assembly-section-title">
+                <span>🎨</span> Armor Paint:
+              </label>
+              <div class="color-swatch-list">
+                <button class="color-swatch-btn active" data-color="#6C5CE7" style="background: #6C5CE7;" title="Cyber Purple"></button>
+                <button class="color-swatch-btn" data-color="#00CEC9" style="background: #00CEC9;" title="Neon Cyan"></button>
+                <button class="color-swatch-btn" data-color="#FDCB6E" style="background: #FDCB6E;" title="Solar Gold"></button>
+                <button class="color-swatch-btn" data-color="#FF7675" style="background: #FF7675;" title="Rocket Coral"></button>
+                <button class="color-swatch-btn" data-color="#00B894" style="background: #00B894;" title="Emerald Green"></button>
+                <button class="color-swatch-btn" data-color="#2D3436" style="background: #2D3436;" title="Dark Obsidian"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Presets -->
+          <div class="preset-robots-bar">
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted);">Quick Presets:</span>
+            <button class="preset-chip-btn" data-preset="titan">🛡️ Titan Bridge-Master</button>
+            <button class="preset-chip-btn" data-preset="scout">🚀 Speedy Scout</button>
+            <button class="preset-chip-btn" data-preset="astro">☀️ Astro Solar-Rover</button>
+          </div>
+
+          <!-- 1. Chassis Body Selection -->
+          <div>
+            <h4 class="assembly-section-title"><span>🛡️</span> 1. Chassis Frame:</h4>
+            <div class="parts-options-grid">
+              <button class="part-card-btn active" data-type="chassis" data-part="titan">
+                <div class="part-card-header"><span>🛡️</span> Titan Bulldozer</div>
+                <div class="part-card-desc">Heavy reinforced armor with hazard bumper.</div>
+                <div class="part-card-perk">+35% Power, Extra Push</div>
+              </button>
+
+              <button class="part-card-btn" data-type="chassis" data-part="scout">
+                <div class="part-card-header"><span>🚀</span> Scout Speeder</div>
+                <div class="part-card-desc">Lightweight streamlined carbon fiber hull.</div>
+                <div class="part-card-perk">+25% Speed, Energy Saver</div>
+              </button>
+
+              <button class="part-card-btn" data-type="chassis" data-part="rover">
+                <div class="part-card-header"><span>🪐</span> Astro Rover</div>
+                <div class="part-card-desc">Scientific laboratory rover with solar panels.</div>
+                <div class="part-card-perk">+20% Battery, +20% Sensor</div>
+              </button>
+
+              <button class="part-card-btn" data-type="chassis" data-part="walker">
+                <div class="part-card-header"><span>🦖</span> Mecha Core</div>
+                <div class="part-card-desc">Bipedal suspension core for steep terrains.</div>
+                <div class="part-card-perk">+15% Power, All-Rounder</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. Locomotion / Movement Selection -->
+          <div>
+            <h4 class="assembly-section-title"><span>🛞</span> 2. Locomotion & Drive:</h4>
+            <div class="parts-options-grid">
+              <button class="part-card-btn active" data-type="locomotion" data-part="treads">
+                <div class="part-card-header"><span>🚜</span> All-Terrain Treads</div>
+                <div class="part-card-desc">Immune to mud and heavy gravel terrain.</div>
+                <div class="part-card-perk">+20% Traction Power</div>
+              </button>
+
+              <button class="part-card-btn" data-type="locomotion" data-part="wheels">
+                <div class="part-card-header"><span>🏎️</span> High-Speed Mag-Wheels</div>
+                <div class="part-card-desc">Rapid turning on paved stone and roads.</div>
+                <div class="part-card-perk">+20% Speed Bonus</div>
+              </button>
+
+              <button class="part-card-btn" data-type="locomotion" data-part="hover">
+                <div class="part-card-header"><span>💨</span> Hover Thrusters</div>
+                <div class="part-card-desc">Floats across water and canyon crevices!</div>
+                <div class="part-card-perk">Glides Across Gaps</div>
+              </button>
+
+              <button class="part-card-btn" data-type="locomotion" data-part="legs">
+                <div class="part-card-header"><span>🦿</span> Hydraulic Walker Legs</div>
+                <div class="part-card-desc">Shock-absorbing pistons to climb ledges.</div>
+                <div class="part-card-perk">+10% Rugged Defense</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Working Tool / Arm Selection -->
+          <div>
+            <h4 class="assembly-section-title"><span>🦾</span> 3. Tool & Construction Arm:</h4>
+            <div class="parts-options-grid">
+              <button class="part-card-btn active" data-type="tool" data-part="crane">
+                <div class="part-card-header"><span>🧲</span> Magnetic Crane Arm</div>
+                <div class="part-card-desc">Picks up steel beams, blocks, and batteries.</div>
+                <div class="part-card-perk">Essential for Building</div>
+              </button>
+
+              <button class="part-card-btn" data-type="tool" data-part="welder">
+                <div class="part-card-header"><span>🔦</span> Plasma Welder Torch</div>
+                <div class="part-card-desc">Welds bridges, cuts locks, activates solar towers.</div>
+                <div class="part-card-perk">High Precision Tool</div>
+              </button>
+
+              <button class="part-card-btn" data-type="tool" data-part="scoop">
+                <div class="part-card-header"><span>🚜</span> Bulldozer Scoop</div>
+                <div class="part-card-desc">Pushes massive boulders out of blocked passes.</div>
+                <div class="part-card-perk">Maximum Clearing Force</div>
+              </button>
+
+              <button class="part-card-btn" data-type="tool" data-part="dynamo">
+                <div class="part-card-header"><span>⚡</span> Solar Dynamo Capacitor</div>
+                <div class="part-card-desc">Recharges energy banks from ambient sunlight.</div>
+                <div class="part-card-perk">+25% Battery Booster</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. Sensor Suite -->
+          <div>
+            <h4 class="assembly-section-title"><span>📡</span> 4. Sensor Suite:</h4>
+            <div class="parts-options-grid" style="grid-template-columns: repeat(3, 1fr);">
+              <button class="part-card-btn active" data-type="sensor" data-part="sonar">
+                <div class="part-card-header"><span>📡</span> Sonar Radar</div>
+                <div class="part-card-desc">Detects obstacles 2 blocks ahead.</div>
+              </button>
+
+              <button class="part-card-btn" data-type="sensor" data-part="infrared">
+                <div class="part-card-header"><span>👁️</span> Infrared Visor</div>
+                <div class="part-card-desc">Locates hidden energy battery cells.</div>
+              </button>
+
+              <button class="part-card-btn" data-type="sensor" data-part="gyro">
+                <div class="part-card-header"><span>🧭</span> Gyro Compass</div>
+                <div class="part-card-desc">Maintains perfect orientation.</div>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================================================================
+         TAB 2: CODE COMMAND LAB (ALGORITHM SEQUENCER)
+         =================================================================== -->
+    <div class="workshop-tab-panel" id="tab-coding">
+      
+      <!-- Mission Briefing Selector Bar -->
+      <div class="mission-brief-bar">
+        <div>
+          <span class="section-tag" style="margin-bottom: 0.3rem;">Choose Construction Challenge</span>
+          <div class="mission-selector-pills">
+            <button class="mission-pill-btn active" data-mission-idx="0">🌉 1. Sky Bridge</button>
+            <button class="mission-pill-btn" data-mission-idx="1">🗼 2. Solar Tower</button>
+            <button class="mission-pill-btn" data-mission-idx="2">🪨 3. Rubble Clear</button>
+            <button class="mission-pill-btn" data-mission-idx="3">🚀 4. Rocket Launchpad</button>
+            <button class="mission-pill-btn" data-mission-idx="4">🏗️ 5. Free Sandbox</button>
+          </div>
+        </div>
+
+        <div style="text-align: right; max-width: 420px;">
+          <h4 id="mission-active-title" style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--primary);">
+            Mission 1: The Sky Bridge 🌉
+          </h4>
+          <p id="mission-active-desc" style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.4rem;">
+            Bridge a canyon gap with 2 steel girders to let the school bus cross!
+          </p>
+          <button class="btn-icon-speaker" onclick="speakText(document.getElementById('mission-active-hint').textContent)">
+            <span>💡</span> Hint: <span id="mission-active-hint">Drive to girder 1, grab it, turn toward canyon, and place it!</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3-Column Code Studio Layout -->
+      <div class="code-studio-layout">
+        
+        <!-- Left: Command Toolbox -->
+        <div class="command-toolbox-panel">
+          <div>
+            <div class="tool-category-title"><span>🚗</span> Navigation Blocks</div>
+            <button class="tool-command-btn move" onclick="window.roboWorkshop.addCommand('move_forward')">
+              <span>⬆️ Move Forward</span> <span>+</span>
+            </button>
+            <button class="tool-command-btn move" onclick="window.roboWorkshop.addCommand('reverse')">
+              <span>⬇️ Reverse Step</span> <span>+</span>
+            </button>
+            <button class="tool-command-btn turn" onclick="window.roboWorkshop.addCommand('turn_left')">
+              <span>↩️ Turn Left (90°)</span> <span>+</span>
+            </button>
+            <button class="tool-command-btn turn" onclick="window.roboWorkshop.addCommand('turn_right')">
+              <span>↪️ Turn Right (90°)</span> <span>+</span>
+            </button>
+          </div>
+
+          <div>
+            <div class="tool-category-title"><span>🏗️</span> Construction Tools</div>
+            <button class="tool-command-btn action" onclick="window.roboWorkshop.addCommand('grab')">
+              <span>🧲 Magnetic Grab</span> <span>+</span>
+            </button>
+            <button class="tool-command-btn action" onclick="window.roboWorkshop.addCommand('place')">
+              <span>🏗️ Place / Build Block</span> <span>+</span>
+            </button>
+            <button class="tool-command-btn weld" onclick="window.roboWorkshop.addCommand('tool_action')">
+              <span>⚡ Tool Action (Weld / Push)</span> <span>+</span>
+            </button>
+          </div>
+
+          <div>
+            <div class="tool-category-title"><span>🔁</span> Logic & Loops</div>
+            <button class="tool-command-btn loop" onclick="window.roboWorkshop.addCommand('repeat_2')">
+              <span>🔁 Repeat 2 Times</span> <span>+</span>
+            </button>
+            <button class="tool-command-btn loop" onclick="window.roboWorkshop.addCommand('repeat_3')">
+              <span>🔁 Repeat 3 Times</span> <span>+</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Middle: Program Tray Sequence Workspace -->
+        <div class="program-tray-panel">
+          <div class="tray-header">
+            <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-main);">
+              📜 Robot Command Sequence:
+            </h4>
+            <div style="display: flex; gap: 0.6rem; align-items: center;">
+              <span class="tray-step-counter" id="step-counter-text">0 Steps</span>
+              <button id="clear-code-btn" style="background: none; border: none; color: #EF4444; font-weight: 600; font-size: 0.85rem; cursor: pointer;">
+                🗑️ Clear
+              </button>
+            </div>
+          </div>
+
+          <!-- Stored Steps Container -->
+          <div class="steps-container" id="program-tray-steps">
+            <!-- Dynamically populated by workshop.js -->
+          </div>
+
+          <!-- Execution Controls -->
+          <div class="code-controls-bar">
+            <button id="run-code-btn" class="btn btn-primary" style="flex: 2;">
+              <span>▶️</span> Run My Code!
+            </button>
+            <button id="step-code-btn" class="btn btn-outline" style="flex: 1;" title="Run one instruction at a time">
+              <span>🐞</span> Step
+            </button>
+            <button id="reset-code-btn" class="btn btn-secondary" style="flex: 1;">
+              <span>🔄</span> Reset
+            </button>
+          </div>
+
+          <!-- Execution Speed Toggles -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.8rem; font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">
+            <span>Execution Speed:</span>
+            <div style="display: flex; gap: 0.4rem;">
+              <button class="preset-chip-btn speed-pill-btn" data-speed="650">🐢 Slow</button>
+              <button class="preset-chip-btn speed-pill-btn active" data-speed="380">🚶 Normal</button>
+              <button class="preset-chip-btn speed-pill-btn" data-speed="180">🚀 Turbo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Real Code Inspector -->
+        <div class="code-inspector-panel">
+          <div class="inspector-nav-tabs">
+            <button class="inspector-tab-btn active" data-lang="blocks">🧩 Blocks</button>
+            <button class="inspector-tab-btn" data-lang="js">⚡ JavaScript</button>
+            <button class="inspector-tab-btn" data-lang="python">🐍 Python</button>
+          </div>
+
+          <div style="font-size: 0.8rem; color: #94A3B8; margin-bottom: 0.5rem; display: flex; justify-content: space-between;">
+            <span>Real Code Translation:</span>
+            <span style="color: #38BDF8;">Auto-Synced</span>
+          </div>
+
+          <pre class="code-output-area" id="code-output-area"></pre>
+
+          <div style="margin-top: 1rem; font-size: 0.78rem; color: #94A3B8; line-height: 1.4;">
+            💡 <strong>Did You Know?</strong> The visual blocks you connect directly generate real JavaScript & Python commands used by professional robotics engineers!
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ===================================================================
+         TAB 3: TEST & MISSION ARENA
+         =================================================================== -->
+    <div class="workshop-tab-panel" id="tab-arena">
+      <div class="arena-layout">
+        
+        <!-- Left: 2D Canvas Arena -->
+        <div class="arena-canvas-card">
+          <div class="arena-canvas-header">
+            <div>
+              <span class="section-tag" style="margin-bottom: 0.2rem;">Live Simulation</span>
+              <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--text-main);">
+                Mission Construction Arena
+              </h3>
+            </div>
+            <div style="display: flex; gap: 0.6rem;">
+              <button class="btn btn-sm btn-outline" onclick="window.roboWorkshop.switchTab('coding')">
+                <span>💻</span> Edit Code
+              </button>
+              <button class="btn btn-sm btn-primary" onclick="window.roboWorkshop.runProgram()">
+                <span>▶️</span> Run Code
+              </button>
+            </div>
+          </div>
+
+          <!-- HTML5 Canvas -->
+          <canvas id="mission-canvas" width="480" height="360"></canvas>
+
+          <!-- Arena Footer Notes -->
+          <div class="arena-canvas-footer">
+            <div style="display: flex; gap: 1rem; font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">
+              <span>🤖 = Robot</span>
+              <span>🔩 = Steel Girder</span>
+              <span>🔋 = Battery Core</span>
+              <span>🪨 = Rock</span>
+              <span>🚌 / 🚀 = Goal</span>
+            </div>
+            <button class="btn-icon-speaker" onclick="speakText('Watch your robot execute your code step-by-step! Check the mission objectives on the right!')">
+              🔊 Arena Guide
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Telemetry & Mission HUD -->
+        <div class="arena-sidebar">
+          
+          <!-- Objectives Checklist -->
+          <div class="hud-card">
+            <h4 class="hud-title"><span>🎯</span> Mission Objectives:</h4>
+            <ul class="mission-checklist" id="mission-checklist">
+              <!-- Rendered by workshop.js -->
+            </ul>
+          </div>
+
+          <!-- Live Robot Telemetry -->
+          <div class="hud-card">
+            <h4 class="hud-title"><span>📡</span> Robot Telemetry:</h4>
+            <div class="telemetry-grid">
+              <div class="telemetry-item">
+                <div class="telemetry-label">Grid Coordinates:</div>
+                <div class="telemetry-val" id="telemetry-pos">(1, 3)</div>
+              </div>
+              <div class="telemetry-item">
+                <div class="telemetry-label">Facing Direction:</div>
+                <div class="telemetry-val" id="telemetry-dir">East ➡️</div>
+              </div>
+              <div class="telemetry-item">
+                <div class="telemetry-label">Cargo Held:</div>
+                <div class="telemetry-val" id="telemetry-cargo">Empty</div>
+              </div>
+              <div class="telemetry-item">
+                <div class="telemetry-label">Battery Level:</div>
+                <div class="telemetry-val" id="telemetry-battery">100%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manual D-Pad Drive Pad -->
+          <div class="hud-card" style="text-align: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <h4 class="hud-title" style="margin: 0;"><span>🕹️</span> Manual Test Drive:</h4>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">WASD / Arrows</span>
+            </div>
+            <div class="d-pad-grid">
+              <div></div>
+              <button class="d-pad-btn" id="dpad-up" title="Forward">⬆️</button>
+              <div></div>
+              <button class="d-pad-btn" id="dpad-left" title="Turn Left">↩️</button>
+              <button class="d-pad-btn" id="dpad-action" title="Action / Grab" style="background: var(--accent-yellow); color: #000;">⚡</button>
+              <button class="d-pad-btn" id="dpad-right" title="Turn Right">↪️</button>
+              <div></div>
+              <button class="d-pad-btn" id="dpad-down" title="Reverse">⬇️</button>
+              <div></div>
+            </div>
+          </div>
+
+          <!-- Live Action Console Log -->
+          <div class="hud-card">
+            <h4 class="hud-title"><span>📟</span> Activity Feed:</h4>
+            <div class="arena-console" id="arena-console-log">
+              <div class="console-entry">🤖 RoboBot OS v2.0 initialized. Ready for commands.</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================================================================
+         TAB 4: BLUEPRINT & CERTIFICATE
+         =================================================================== -->
+    <div class="workshop-tab-panel" id="tab-blueprint">
+      <div class="blueprint-showcase-card">
+        <div class="blueprint-grid-overlay"></div>
+
+        <div class="blueprint-showcase-header">
+          <div>
+            <div class="blueprint-seal">Certified STEM Blueprint</div>
+            <h2 id="bp-robot-name" style="font-family: var(--font-heading); font-size: 2.2rem; color: #64FFDA; margin-top: 0.5rem;">
+              Titan-3000
+            </h2>
+            <p style="font-size: 0.95rem; color: #8892B0;">
+              Autonomously Programmed by Young Coder • Community Engagement Project
+            </p>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.85rem; color: #8892B0;">STATUS:</div>
+            <div id="bp-missions-count" style="font-family: var(--font-heading); font-size: 1.4rem; color: #FDCB6E;">
+              0 / 5 Solved
+            </div>
+          </div>
+        </div>
+
+        <div class="blueprint-showcase-body">
+          <div id="bp-preview-container" style="max-width: 320px; margin: 0 auto;">
+            <!-- Mirrored Robot SVG -->
+          </div>
+
+          <div>
+            <h4 style="font-family: var(--font-heading); font-size: 1.25rem; color: #CCD6F6; margin-bottom: 1rem;">
+              🛠️ Engineering Specifications:
+            </h4>
+            <div id="bp-robot-specs" style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem; color: #8892B0; font-family: monospace;">
+              <!-- Filled by workshop.js -->
+            </div>
+
+            <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
+              <button id="download-blueprint-btn" class="btn btn-secondary">
+                <span>💾</span> Download Blueprint Card (PNG)
+              </button>
+              <a href="certificate.html?badge=RoboBot%20Master%20Engineer%20🤖🛠️" class="btn btn-primary" id="bp-claim-cert-link">
+                <span>📜</span> Claim Engineer Certificate ➡️
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Educational "What You Learned" Cards -->
+    <div style="margin-top: 3.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+      <div style="background: white; border-radius: var(--radius-lg); padding: 2rem; border: 2px solid var(--card-border);">
+        <span style="font-size: 2.2rem; display: block; margin-bottom: 0.8rem;">🦾</span>
+        <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 0.4rem;">Hardware Engineering</h4>
+        <p style="font-size: 0.92rem; color: var(--text-muted);">
+          Different tasks require different physical tools! Treads provide grip, hovers cross water, and magnetic cranes manipulate physical materials.
+        </p>
+      </div>
+
+      <div style="background: white; border-radius: var(--radius-lg); padding: 2rem; border: 2px solid var(--card-border);">
+        <span style="font-size: 2.2rem; display: block; margin-bottom: 0.8rem;">🧠</span>
+        <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 0.4rem;">Algorithmic Logic</h4>
+        <p style="font-size: 0.92rem; color: var(--text-muted);">
+          Robots don't guess! They follow your exact sequence of instructions. Using <strong>Loops</strong> saves you dozens of steps when constructing towers!
+        </p>
+      </div>
+
+      <div style="background: white; border-radius: var(--radius-lg); padding: 2rem; border: 2px solid var(--card-border);">
+        <span style="font-size: 2.2rem; display: block; margin-bottom: 0.8rem;">🐞</span>
+        <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 0.4rem;">Step Debugging</h4>
+        <p style="font-size: 0.92rem; color: var(--text-muted);">
+          When a robot bumps into a rock, engineers use <strong>Step Debugging</strong> to test one command at a time and fix the code flaw!
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Victory Celebration Modal -->
+  <div class="modal-overlay" id="victory-modal">
+    <div class="victory-modal-card">
+      <div class="victory-stars animate-twinkle">⭐⭐⭐</div>
+      <h2 id="modal-mission-name" style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--primary); margin-bottom: 0.6rem;">
+        Mission Accomplished! 🎉
+      </h2>
+      <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        Your robot successfully executed your algorithm and built the structure!
+      </p>
+
+      <div id="modal-mission-stats" style="background: #F8FAFC; border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.5rem; text-align: left; font-size: 0.95rem; border: 1.5px solid #E2E8F0;">
+        <!-- Filled by JS -->
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+        <button id="modal-next-mission-btn" class="btn btn-primary" style="width: 100%;">
+          <span>🚀</span> Next Construction Mission ➡️
+        </button>
+        <button id="modal-blueprint-btn" class="btn btn-outline" style="width: 100%;">
+          <span>📜</span> View Robot Blueprint
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom: 0.8rem;">
+          <div class="logo-badge">{ }</div>
+          <div class="logo-text">
+            <h1>CodeKids</h1>
+            <span>CEP Project • Young Coders</span>
+          </div>
+        </div>
+        <p>Empowering school children with coding literacy and creative problem solving.</p>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Explore Activities</h4>
+        <ul class="footer-links">
+          <li><a href="workshop.html">🛠️ RoboBot Workshop</a></li>
+          <li><a href="playground.html">🎮 RoboCoder Maze Game</a></li>
+          <li><a href="quiz.html">🏆 Kid Coder Quiz</a></li>
+          <li><a href="certificate.html">📜 Generate Your Certificate</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Project Info</h4>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Vaishnavi CEP Project • Coding Awareness for School Children
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 CodeKids CEP Project • Designed with ❤️ for School Children Everywhere!</p>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/workshop.js"></script>
+</body>
+</html>

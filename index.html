@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Coding Awareness for School Children - A fun, interactive website helping kids discover the magic of programming and problem solving.">
+  <title>CodeKids 🚀 | Coding Awareness for School Children</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar" id="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" id="site-logo">
+        <div class="logo-badge">{ }</div>
+        <div class="logo-text">
+          <h1>CodeKids</h1>
+          <span>CEP Project • Young Coders</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link active">🏠 Home</a></li>
+        <li><a href="learn.html" class="nav-link">💡 Learn to Code</a></li>
+        <li><a href="playground.html" class="nav-link">🎮 Robo Maze Game</a></li>
+        <li><a href="workshop.html" class="nav-link">🛠️ RoboBot Workshop</a></li>
+        <li><a href="quiz.html" class="nav-link">🏆 Kid Quiz</a></li>
+        <li><a href="certificate.html" class="nav-link">📜 Get Certificate</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="sound-toggle-btn" class="sound-toggle-btn" title="Toggle Sound Effects">
+          🔊 Sound: ON
+        </button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-badge-pill">
+          <span>✨</span> Welcome Young Innovators & School Stars!
+        </div>
+        <h1 class="hero-title">
+          Unlock Your Digital <span class="gradient-text">Superpower!</span> 🚀
+        </h1>
+        <p class="hero-description">
+          Coding isn't just for grown-ups in offices! It's like playing with digital Lego blocks—giving you the power to invent games, build robots, create animations, and change the world!
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="workshop.html" class="btn btn-secondary" id="hero-workshop-btn">
+            <span>🛠️</span> RoboBot Workshop (Build & Code!)
+          </a>
+          <a href="playground.html" class="btn btn-primary" id="hero-play-btn">
+            <span>🎮</span> Play Maze Game
+          </a>
+          <a href="learn.html" class="btn btn-outline" id="hero-learn-btn">
+            <span>💡</span> Start Learning
+          </a>
+        </div>
+
+        <div class="hero-highlights">
+          <div class="highlight-item">
+            <div class="highlight-icon">🧩</div>
+            <span>No Math Required</span>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🤖</div>
+            <span>Fun & Visual</span>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🏆</div>
+            <span>Earn Badges</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-robot-wrapper">
+          <img src="assets/images/robot-mascot.jpg" alt="Friendly CodeKids Robot Mascot" class="hero-robot-img" id="hero-mascot-img">
+          <div class="floating-card card-top-right">
+            <span>💡</span> "Code = Creativity!"
+          </div>
+          <div class="floating-card card-bottom-left">
+            <span>⭐</span> Junior Coder Approved!
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container">
+
+    <!-- Fact of the Day Ticker (Live Backend API) -->
+    <div class="fact-ticker-bar" id="fact-ticker">
+      <div class="fact-content">
+        <span class="fact-tag">DID YOU KNOW? ⚡</span>
+        <span id="daily-fact-text">Loading a cool daily coding fact from the server...</span>
+      </div>
+      <button class="btn-icon-speaker" onclick="speakText(document.getElementById('daily-fact-text').innerText)">
+        🔊 Read to Me
+      </button>
+    </div>
+
+    <!-- Section: What is Coding? -->
+    <section class="section" id="what-is-coding">
+      <div class="section-header">
+        <span class="section-tag">First Steps</span>
+        <h2 class="section-title">What Exactly is Coding? 🤔</h2>
+        <p class="section-subtitle">
+          Imagine you have a friendly robot helper. The robot wants to do whatever you want, but it doesn't speak English or Hindi—it only follows exact steps!
+        </p>
+      </div>
+
+      <!-- Interactive Mini Code Console -->
+      <div class="demo-box" id="mini-coder-demo">
+        <div class="demo-instructions">
+          <h3>Try Coding Right Now! 🛠️</h3>
+          <p style="margin: 0.8rem 0 1.2rem; color: var(--text-muted);">
+            Computers do <strong>exactly</strong> what we tell them to do! Click the command blocks below to send real code instructions to Robo:
+          </p>
+          <div class="demo-buttons">
+            <button class="demo-cmd-btn" onclick="runDemoCommand('step')">👣 robo.stepForward();</button>
+            <button class="demo-cmd-btn" onclick="runDemoCommand('wave')">👋 robo.waveHello();</button>
+            <button class="demo-cmd-btn" onclick="runDemoCommand('dance')">💃 robo.dance();</button>
+            <button class="demo-cmd-btn" onclick="runDemoCommand('speak')">🔊 robo.speak();</button>
+            <button class="demo-cmd-btn" onclick="runDemoCommand('reset')">🔄 reset();</button>
+          </div>
+        </div>
+
+        <div class="demo-screen">
+          <div style="font-size: 0.85rem; color: #94A3B8;">// Robo's Live Visual Screen</div>
+          <div class="screen-robot" id="demo-robot-icon">🤖</div>
+          <div class="screen-log" id="demo-log">> System ready. Press a button to run code!</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Why School Kids Should Learn to Code -->
+    <section class="section" id="why-code">
+      <div class="section-header">
+        <span class="section-tag">The Superpowers You Get</span>
+        <h2 class="section-title">Why Should Every School Student Code? 🌟</h2>
+        <p class="section-subtitle">
+          Learning to code doesn't mean you have to become a computer programmer. It helps you become a master problem-solver in school and daily life!
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Card 1 -->
+        <div class="info-card">
+          <div class="card-top-icon icon-purple">🧠</div>
+          <h3>Super Problem Solving</h3>
+          <p>
+            Coding teaches you how to break giant, scary problems into tiny, bite-sized puzzle pieces you can solve easily!
+          </p>
+          <div class="card-footer">
+            <span style="font-weight: 700; color: var(--primary);">Skill: Logical Thinking</span>
+            <button class="btn-icon-speaker" onclick="speakText('Super Problem Solving. Coding teaches you how to break giant problems into tiny bite-sized puzzle pieces!')">🔊 Listen</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="info-card">
+          <div class="card-top-icon icon-orange">🎨</div>
+          <h3>Unleash Your Creativity</h3>
+          <p>
+            Instead of just playing video games on your phone, you get to CREATE your own video games, animations, stories, and apps!
+          </p>
+          <div class="card-footer">
+            <span style="font-weight: 700; color: var(--accent-orange);">Skill: Creative Design</span>
+            <button class="btn-icon-speaker" onclick="speakText('Unleash Your Creativity. Instead of just playing games, you get to create your own games and animations!')">🔊 Listen</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="info-card">
+          <div class="card-top-icon icon-green">🛡️</div>
+          <h3>Never Fear Mistakes!</h3>
+          <p>
+            In coding, mistakes are called <strong>"Bugs"</strong> 🐞. Every bug you fix makes you smarter and teaches you resilience!
+          </p>
+          <div class="card-footer">
+            <span style="font-weight: 700; color: var(--accent-green);">Skill: Debugging Grit</span>
+            <button class="btn-icon-speaker" onclick="speakText('Never Fear Mistakes! In coding, mistakes are called bugs. Fixing them makes you smarter!')">🔊 Listen</button>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="info-card">
+          <div class="card-top-icon icon-pink">🚀</div>
+          <h3>Build The Future</h3>
+          <p>
+            From flying spacecraft to Mars, inventing robotic arms, to creating medical cures—every future innovation is powered by code!
+          </p>
+          <div class="card-footer">
+            <span style="font-weight: 700; color: var(--accent-coral);">Skill: Future Ready</span>
+            <button class="btn-icon-speaker" onclick="speakText('Build The Future. From space rockets to robotic arms, every future innovation runs on code!')">🔊 Listen</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: RoboBot Workshop Feature Banner -->
+    <section class="section" style="margin-top: 3.5rem;">
+      <div style="background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4338CA 100%); border-radius: var(--radius-lg); padding: 3rem; color: white; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; align-items: center; border: 3px solid #6366F1;">
+        <div>
+          <span style="background: rgba(255, 255, 255, 0.15); color: #FDCB6E; padding: 0.35rem 0.9rem; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 0.8rem;">
+            ✨ Brand New Interactive Studio!
+          </span>
+          <h2 style="font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 1rem; color: #FFFFFF;">
+            RoboBot Workshop: Build & Code! 🤖🛠️
+          </h2>
+          <p style="font-size: 1.1rem; color: #E0E7FF; margin-bottom: 1.8rem; line-height: 1.6;">
+            Become a hardware & software engineer! Customize your robot's chassis, wheels, and tools, then stack code command blocks to construct bridges, assemble space rockets, and power up solar towers!
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="workshop.html" class="btn btn-secondary">
+              <span>🛠️</span> Enter RoboBot Workshop
+            </a>
+            <a href="certificate.html?badge=RoboBot%20Master%20Engineer%20🤖🛠️" class="btn btn-outline" style="color: white; border-color: white; background: rgba(255, 255, 255, 0.1);">
+              <span>📜</span> View Engineer Badges
+            </a>
+          </div>
+        </div>
+
+        <div style="text-align: center; background: rgba(0, 0, 0, 0.2); border-radius: var(--radius-md); padding: 2rem; border: 2px dashed rgba(255, 255, 255, 0.2);">
+          <div style="font-size: 5rem; margin-bottom: 0.5rem;" class="robot-hop">🤖</div>
+          <div style="font-family: var(--font-heading); font-size: 1.2rem; color: #FDCB6E; font-weight: 700;">
+            5 Construction Missions!
+          </div>
+          <div style="font-size: 0.9rem; color: #C7D2FE; margin-top: 0.3rem;">
+            Bridge Builder • Solar Tower • Rock Clear • Rocket Launchpad • Free Sandbox
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kid Coder Pledge Section -->
+    <section class="section" id="pledge-section" style="margin-top: 3rem;">
+      <div style="background: white; border-radius: var(--radius-lg); padding: 2.5rem; border: 2px solid var(--card-border);">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 2rem;">
+          <span class="section-tag">Young Innovator Community</span>
+          <h2 class="section-title">Take The Kid Coder Pledge! ✋</h2>
+          <p style="color: var(--text-muted);">
+            Promise to use your computer skills for curiosity, learning, and making the world a friendlier place!
+          </p>
+        </div>
+
+        <form id="pledge-form" style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+          <div>
+            <label for="pledge-name" style="font-weight: 700; font-family: var(--font-heading); display: block; margin-bottom: 0.4rem;">Your Name / Nickname:</label>
+            <input type="text" id="pledge-name" class="form-input" placeholder="e.g. Maya or Rohit" required>
+          </div>
+          <div>
+            <label for="pledge-select" style="font-weight: 700; font-family: var(--font-heading); display: block; margin-bottom: 0.4rem;">Choose Your Code Pledge:</label>
+            <select id="pledge-select" class="form-input">
+              <option value="I promise to build cool games that bring joy to others!">🎮 I promise to build cool games that bring joy to others!</option>
+              <option value="I promise to use technology to protect nature and animals!">🌱 I promise to use technology to protect nature and animals!</option>
+              <option value="I promise to never give up when fixing coding bugs!">🐞 I promise to never give up when fixing coding bugs!</option>
+              <option value="I promise to teach a friend what I learn about computers!">🤝 I promise to teach a friend what I learn about computers!</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-secondary" style="margin-top: 0.5rem;">
+            <span>⭐</span> Sign My Pledge!
+          </button>
+        </form>
+
+        <div id="pledge-success" style="display: none; text-align: center; margin-top: 1.5rem; background: #DCFCE7; border: 2px solid #10AC84; padding: 1rem; border-radius: var(--radius-md); color: #166534; font-family: var(--font-heading);"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom: 0.8rem;">
+          <div class="logo-badge">{ }</div>
+          <div class="logo-text">
+            <h1>CodeKids</h1>
+            <span>CEP Project • Young Coders</span>
+          </div>
+        </div>
+        <p>
+          Empowering school children with coding literacy, logical thinking, and digital creativity through fun interactive experiences.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Explore Modules</h4>
+        <ul class="footer-links">
+          <li><a href="workshop.html">🛠️ RoboBot Workshop (Build & Code)</a></li>
+          <li><a href="playground.html">🎮 RoboCoder Maze Game</a></li>
+          <li><a href="learn.html">💡 Learn Core Concepts</a></li>
+          <li><a href="quiz.html">🏆 Take the Kid Coder Quiz</a></li>
+          <li><a href="certificate.html">📜 Generate Certificate</a></li>
+          <li><a href="documentation.html" style="font-weight: 700; color: var(--accent);">📄 CEP Documentation Report (Chapters 1–3)</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Project Info</h4>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem;">
+          <strong>Topic:</strong> Coding Awareness for School Children
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem;">
+          <strong>Initiative:</strong> Community Engagement Project (CEP)
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          <strong>Created By:</strong> Vaishnavi
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 CodeKids CEP Project • Designed with ❤️ for School Children Everywhere!</p>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
